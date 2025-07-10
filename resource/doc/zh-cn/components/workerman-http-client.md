@@ -144,7 +144,9 @@ $worker->onWorkerStart = function(){
         'max_conn_per_addr' => 128, // 每个域名最多维持多少并发连接
         'keepalive_timeout' => 15,  // 连接多长时间不通讯就关闭
         'connect_timeout'   => 30,  // 连接超时时间
-        'timeout'           => 30,  // 请求发出后等待响应的超时时间
+        'timeout'           => 30,  // 普通请求发出后等待响应的超时时间
+        'stream_timeout'    => 30,  // 流式响应中每次数据传输之间的最大间隔时间(秒)
+        'stream_max_time'   => 0,  // 流式响应的总最大持续时间(秒),默认0:不限制
     ];
     $http = new Workerman\Http\Client($options);
 
